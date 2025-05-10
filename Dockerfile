@@ -11,10 +11,14 @@ RUN apt-get update -y && \
 # We copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /open-astro-web-service/requirements.txt
 
+CMD ["ls -lah"]
+
 WORKDIR /open-astro-web-service
 
 RUN pip install -r requirements.txt
 RUN pip install kerykeion
+
+CMD ["ls -lah"]
 
 COPY ./package.deployment/openastro-1.1.57.tar.gz tmp/
 RUN python -m pip install ./tmp/openastro-1.1.57.tar.gz
