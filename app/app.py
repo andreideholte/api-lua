@@ -42,9 +42,8 @@ def create_map(chartType):
         int(personal_data['minute']), 
         personal_data['location'], 
         personal_data['countryCode'], 
-        geonames_username="demo",
+        geonames_username="andreideholte",
         perspective_type="True Geocentric",
-
     )
 
     chart = KerykeionChartSVG(astrological_subject, chart_language="PT", chart_type=chartType)
