@@ -1,6 +1,6 @@
 # API Lua 🌘
 
-Webservice to generate Astrological charts using kerykeion, a Python library for astrology that computes planetary and house positions, detects aspects, and generates SVG charts—including birth, synastry, transit, and composite charts. You can also customize which planets to include in your calculations. Also use the full version of Pyswisseph which is a python implementation of [swiss ephemeris](https://github.com/astrorigin/pyswisseph).
+API to generate Astrological charts using kerykeion, a Python library for astrology that computes planetary and house positions, detects aspects, and generates SVG charts—including birth, synastry, transit, and composite charts. You can also customize which planets to include in your calculations. Also use the full version of Pyswisseph which is a python implementation of [swiss ephemeris](https://github.com/astrorigin/pyswisseph).
 
 Licenses
 
