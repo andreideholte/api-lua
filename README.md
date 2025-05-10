@@ -46,7 +46,7 @@ The API provides endpoints to generate astrological charts. Examples of usage an
 
 ## Important Warning ⚠️
 
-The `geonames_username` field used in the `def criarmapa()` function located in `app.py` is a personal username. You must create your own username for use. To do this, visit the [GeoNames website](https://www.geonames.org/) and register for a new username. This is required to ensure proper functionality of the API.
+The `geonames_username` field used in the `def create_map()` function located in `app.py` is a personal username. You must create your own username for use. To do this, visit the [GeoNames website](https://www.geonames.org/) and register for a new username. This is required to ensure proper functionality of the API.
 
 ## License 📄
 
@@ -67,7 +67,3 @@ Contributions are welcome! Follow the steps below to contribute:
 ## Contact 📬
 
 Created by [Andrei Nascimento](mailto:andreideholte@gmail.com). Feel free to get in touch!
-
----
-
-Made with ❤️ by astrology enthusiasts.

@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 COPY ./app/*.py /api-lua/app/
 WORKDIR /api-lua/app
 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0", "--port=5050"]
+CMD ["uwsgi", "--ini", "uwsgi.ini"]
