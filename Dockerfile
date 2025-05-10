@@ -13,10 +13,6 @@ COPY ./requirements.txt /open-astro-web-service/requirements.txt
 WORKDIR /open-astro-web-service
 
 RUN pip install -r requirements.txt
-RUN pip install kerykeion
-
-COPY ./package.deployment/openastro-1.1.57.tar.gz tmp/
-RUN python -m pip install ./tmp/openastro-1.1.57.tar.gz
 
 COPY ./app/*.py /open-astro-web-service/app/
 WORKDIR /open-astro-web-service/app

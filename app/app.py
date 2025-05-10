@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 from kerykeion import KerykeionChartSVG, AstrologicalSubject
 
@@ -8,7 +8,7 @@ CORS(app)
 @app.route('/')
 def index():
     '''identify the service'''
-    return 'Fernanda Hay - Mapa Astral API'
+    return 'Ceu Interior - API Lua'
 
 
 @app.route('/mapas/natal', methods=['POST'])
@@ -26,13 +26,12 @@ def criarmapa() :
         int(dadosPessoais['minuto']), 
         dadosPessoais['local'], 
         dadosPessoais['pais'], 
-        tz_str="America/Sao_Paulo"
+        geonames_username="andreideholte",
+        perspective_type="True Geocentric"
     )
-    
-    chart = KerykeionChartSVG(pessoaAstrologica)
-    template = chart.makeTemplate()
 
-    print ('mapanatal - finalizado mapa', dadosPessoais['nome'])
+    chart = KerykeionChartSVG(pessoaAstrologica, chart_language="PT")
+    template = chart.makeTemplate()
 
     return template
 
