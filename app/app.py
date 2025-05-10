@@ -52,7 +52,7 @@ def create_map(chartType):
         int(minute), 
         personal_data['location'], 
         personal_data['countryCode'], 
-        geonames_username="demo",
+        geonames_username="andreideholte",
         perspective_type="True Geocentric",
     )
 
