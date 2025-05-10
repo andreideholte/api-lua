@@ -26,7 +26,7 @@ def criarmapa() :
         int(dadosPessoais['minuto']), 
         dadosPessoais['local'], 
         dadosPessoais['pais'], 
-        geonames_username="andreideholte",
+        geonames_username="demo",
         perspective_type="True Geocentric"
     )
 
