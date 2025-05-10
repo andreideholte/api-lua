@@ -12,6 +12,7 @@ WORKDIR /api-lua
 RUN pip install -r requirements.txt
 
 COPY ./app/*.py /api-lua/app/
+COPY ./app/uwsgi.ini /api-lua/app/
 WORKDIR /api-lua/app
 
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
