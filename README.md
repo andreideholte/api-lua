@@ -42,7 +42,7 @@ Make sure you have the following requirements installed:
 
 ## Usage 📖
 
-The API provides endpoints to generate astrological charts. Examples of usage and detailed documentation can be found in the [Swagger](#swagger-documentation) file.
+The API provides endpoints to generate astrological charts. Examples of usage and detailed documentation can be found in the [Swagger](https://github.com/andreideholte/api-lua/blob/main/swagger.yaml) file.
 
 ## Important Warning ⚠️
 
