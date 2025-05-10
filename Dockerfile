@@ -8,13 +8,13 @@ LABEL Andrei Nascimento "andreideholte@gmail.com"
 RUN apt-get update -y && \
     apt-get install gcc
 
-COPY ./requirements.txt /open-astro-web-service/requirements.txt
+COPY ./requirements.txt /api-lua/requirements.txt
 
-WORKDIR /open-astro-web-service
+WORKDIR /api-lua
 
 RUN pip install -r requirements.txt
 
-COPY ./app/*.py /open-astro-web-service/app/
-WORKDIR /open-astro-web-service/app
+COPY ./app/*.py /api-lua/app/
+WORKDIR /api-lua/app
 
 CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0", "--port=5050"]
