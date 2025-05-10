@@ -6,10 +6,18 @@ info:
 servers:
   - url: http://localhost:5050
 paths:
-  /mapas/natal:
+  /chart/{chartType}:
     post:
-      summary: Generate a natal chart
-      description: Creates a natal chart based on the provided personal data.
+      summary: Generate an astrological chart
+      description: Creates an astrological chart based on the provided personal data and chart type.
+      parameters:
+        - name: chartType
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [Natal]
+          description: Type of the astrological chart to generate. Currently, only 'Natal' is supported.
       requestBody:
         required: true
         content:
@@ -17,46 +25,48 @@ paths:
             schema:
               type: object
               properties:
-                nome:
+                name:
                   type: string
                   description: Name of the person.
-                ano:
+                year:
                   type: integer
                   description: Year of birth.
-                mes:
+                month:
                   type: integer
                   description: Month of birth.
-                dia:
+                day:
                   type: integer
                   description: Day of birth.
-                hora:
+                hour:
                   type: integer
                   description: Hour of birth.
-                minuto:
+                minute:
                   type: integer
                   description: Minute of birth.
-                local:
+                location:
                   type: string
                   description: Place of birth.
-                pais:
+                countryCode:
                   type: string
-                  description: Country of birth.
+                  description: Country code of birth.
               required:
-                - nome
-                - ano
-                - mes
-                - dia
-                - hora
-                - minuto
-                - local
-                - pais
+                - name
+                - year
+                - month
+                - day
+                - hour
+                - minute
+                - location
+                - countryCode
       responses:
         "200":
-          description: Natal chart successfully generated.
+          description: Astrological chart successfully generated.
           content:
             application/xml:
               schema:
                 type: string
-                description: SVG representation of the natal chart.
+                description: SVG representation of the astrological chart.
         "400":
           description: Invalid input data.
+        "404":
+          description: Unsupported chart type.
