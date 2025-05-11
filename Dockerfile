@@ -15,4 +15,7 @@ COPY ./app/*.py /api-lua/app/
 COPY ./app/uwsgi.ini /api-lua/app/
 WORKDIR /api-lua/app
 
+RUN adduser --disabled-password --gecos '' uwsgiuser
+USER uwsgiuser
+
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
