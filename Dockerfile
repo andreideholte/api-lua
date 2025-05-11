@@ -16,6 +16,10 @@ COPY ./app/uwsgi.ini /api-lua/app/
 WORKDIR /api-lua/app
 
 RUN adduser --disabled-password --gecos '' uwsgiuser
+
+RUN mkdir -p /api-lua/app/cache && chown uwsgiuser:uwsgiuser /api-lua/app/cache
+RUN chmod 700 /api-lua/app/cache
+
 USER uwsgiuser
 
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
