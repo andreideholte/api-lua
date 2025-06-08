@@ -59,7 +59,7 @@ def create_map(chartType):
     chart = KerykeionChartSVG(astrological_subject, chart_language="PT", chart_type=chartType)
     template = chart.makeTemplate()
 
-    return template
+    return jsonify({'chart': template})
 
 if __name__ == '__main__':
     app.run(debug=True)

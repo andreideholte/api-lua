@@ -46,10 +46,14 @@ paths:
         "200":
           description: Astrological chart successfully generated.
           content:
-            application/xml:
+            application/json:
               schema:
-                type: string
-                description: SVG representation of the astrological chart.
+                type: object
+                properties:
+                  chart:
+                    type: string
+                    format: content
+                description: Json object with chart attribute that represents SVG of the astrological chart.
         "400":
           description: Invalid input data.
         "404":
