@@ -28,21 +28,9 @@ paths:
                 name:
                   type: string
                   description: Name of the person.
-                year:
-                  type: integer
-                  description: Year of birth.
-                month:
-                  type: integer
-                  description: Month of birth.
-                day:
-                  type: integer
-                  description: Day of birth.
-                hour:
-                  type: integer
-                  description: Hour of birth.
-                minute:
-                  type: integer
-                  description: Minute of birth.
+                birthdate:
+                  type: string
+                  description: Birthdate in the format 'YYYY-MM-DD HH:MM'.
                 location:
                   type: string
                   description: Place of birth.
@@ -51,11 +39,7 @@ paths:
                   description: Country code of birth.
               required:
                 - name
-                - year
-                - month
-                - day
-                - hour
-                - minute
+                - birthdate
                 - location
                 - countryCode
       responses:

@@ -33,18 +33,27 @@ def create_map(chartType):
 
     print('Creating natal chart for', personal_data['name'])
 
+    date = personal_data['birthdate'].split(" ")[0]
+    fullHour = personal_data['birthdate'].split(" ")[1]
+
+    year = date.split('-')[0]
+    month = date.split('-')[1]
+    day = date.split('-')[2]
+
+    hour = fullHour.split(':')[0]
+    minute = fullHour.split(':')[1]
+
     astrological_subject = AstrologicalSubject(
         personal_data['name'], 
-        int(personal_data['year']), 
-        int(personal_data['month']), 
-        int(personal_data['day']), 
-        int(personal_data['hour']), 
-        int(personal_data['minute']), 
+        int(year), 
+        int(month), 
+        int(day), 
+        int(hour), 
+        int(minute), 
         personal_data['location'], 
         personal_data['countryCode'], 
         geonames_username="demo",
         perspective_type="True Geocentric",
-
     )
 
     chart = KerykeionChartSVG(astrological_subject, chart_language="PT", chart_type=chartType)
