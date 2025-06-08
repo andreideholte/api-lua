@@ -25,23 +25,28 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                  description: Name of the person.
-                birthdate:
-                  type: string
-                  description: Birthdate in the format 'YYYY-MM-DD HH:MM'.
-                location:
-                  type: string
-                  description: Place of birth.
-                countryCode:
-                  type: string
-                  description: Country code of birth.
+                data:
+                  type: object
+                  description: Personal data required to generate the chart.
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the person.
+                    birthdate:
+                      type: string
+                      format: date-time
+                      description: Birthdate in the format 'YYYY-MM-DD HH:MM'.
+                    location:
+                      type: string
+                      description: Place of birth.
+                    countryCode:
+                      type: string
+                      description: Country code of birth.
               required:
-                - name
-                - birthdate
-                - location
-                - countryCode
+                - data.name
+                - data.birthdate
+                - data.location
+                - data.countryCode
       responses:
         "200":
           description: Astrological chart successfully generated.

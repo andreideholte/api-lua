@@ -29,9 +29,7 @@ def create_map(chartType):
     if chartType not in ['Natal'] : 
         return jsonify({"error": "Sorry, the 'chartType' parameter is not supported yet."}), 404
 
-    print(request.json)
-
-    personal_data = request.json
+    personal_data = request.json['data']
 
     print('Creating natal chart for', personal_data['name'])
 
