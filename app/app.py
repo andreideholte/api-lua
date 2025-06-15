@@ -31,6 +31,8 @@ def create_map(chartType):
 
     personal_data = request.json['data']
 
+    print(jsonify(personal_data))
+
     print('Creating natal chart for', personal_data['name'])
 
     date = personal_data['birthdate'].split(" ")[0]
