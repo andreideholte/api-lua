@@ -37,16 +37,7 @@ def create_map(chartType):
     date = personal_data['field:comp-mbwn9mp2']
     fullHour = personal_data['field:comp-mc3i8u21']
 
-    # some situations country may come in stateCountry variable, in this case we check if country is empty
-    [ location, stateCountry, country ] = personal_data['field:comp-mbwmrv73'].split(',')
-
-    if (country == ''):
-        country = stateCountry
-
-    if (country == 'Brasil'):
-        country = 'BR'
-    elif (country == 'EUA'):
-        country = 'US'
+    location = personal_data['field:comp-mbwmrv73'].split(',')
 
     print('Creating natal chart for', name)
 
@@ -54,14 +45,14 @@ def create_map(chartType):
     [ hour, minute ] = fullHour.split(':')
 
     astrological_subject = AstrologicalSubject(
-        name, 
-        int(year), 
-        int(month), 
-        int(day), 
-        int(hour), 
-        int(minute), 
-        location, 
-        country, 
+        name,
+        int(year),
+        int(month),
+        int(day),
+        int(hour),
+        int(minute),
+        location,
+        'BR',
         geonames_username="andreideholte",
         perspective_type="True Geocentric",
     )
