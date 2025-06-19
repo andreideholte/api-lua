@@ -31,29 +31,35 @@ def create_map(chartType):
 
     personal_data = request.json['data']
 
-    print(personal_data)
+    name = personal_data['field:comp-mbwmkwa1']
+    date = personal_data['field:comp-mbwn9mp2']
+    fullHour = personal_data['field:comp-mc3i8u21']
 
-    print('Creating natal chart for', personal_data['name'])
+    # some situations country may come in stateCountry variable, in this case we check if country is empty
+    [ location, stateCountry, country ] = personal_data['field:comp-mbwmrv73'].split(',')
 
-    date = personal_data['birthdate'].split(" ")[0]
-    fullHour = personal_data['birthdate'].split(" ")[1]
+    if (country == ''):
+        country = stateCountry
 
-    year = date.split('-')[0]
-    month = date.split('-')[1]
-    day = date.split('-')[2]
+    if (country == 'Brasil'):
+        country = 'BR'
+    elif (country == 'EUA'):
+        country = 'US'
 
-    hour = fullHour.split(':')[0]
-    minute = fullHour.split(':')[1]
+    print('Creating natal chart for', name)
+
+    [ year, month, day ] = date.split('-')
+    [ hour, minute ] = fullHour.split(':')
 
     astrological_subject = AstrologicalSubject(
-        personal_data['name'], 
+        name, 
         int(year), 
         int(month), 
         int(day), 
         int(hour), 
         int(minute), 
-        personal_data['location'], 
-        personal_data['countryCode'], 
+        location, 
+        country, 
         geonames_username="andreideholte",
         perspective_type="True Geocentric",
     )
