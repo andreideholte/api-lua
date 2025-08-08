@@ -31,18 +31,40 @@ def create_map(chartType):
 
     print(request.json)
     
-    personal_data = request.json['data']
-
-    name = personal_data['field:comp-mbwmkwa1']
-    date = personal_data['field:comp-mbwn9mp2']
-    fullHour = personal_data['field:comp-mc3i8u21']
-
-    location = personal_data['field:comp-mbwmrv73'].split(',')
-
+    fields = request.json['fields']
+    
+    # Encontrar os campos pelos seus IDs
+    name = None
+    date = None
+    fullHour = None
+    location = None
+    country = None
+    
+    for field in fields:
+        if field['fieldName'] == 'nome_completo':
+            name = field['fieldValue']
+        elif field['fieldName'] == 'data_nascimento':
+            # Formato esperado: "1993-01-24T02: 00: 00.000Z"
+            date_str = field['fieldValue'].replace(' ', '')
+            date = date_str.split('T')[0]  # Pega apenas a parte da data
+        elif field['fieldName'] == 'Hora de Nascimento':
+            # Formato esperado: "07: 35: 00.000"
+            fullHour = field['fieldValue'].replace(' ', '')
+        elif field['fieldName'] == 'local_nascimento':
+            location_data = field['fieldValue']
+            location = [str(location_data['location']['latitude']), 
+                       str(location_data['location']['longitude'])]
+            country = location_data['country']
+    
     print('Creating natal chart for', name)
 
-    [ year, month, day ] = date.split('-')
-    [ hour, minute ] = fullHour.split(':')
+    # Extrair ano, mês e dia da data
+    [year, month, day] = date.split('-')
+    
+    # Extrair hora e minuto
+    hour_parts = fullHour.split(':')
+    hour = hour_parts[0]
+    minute = hour_parts[1]
 
     astrological_subject = AstrologicalSubject(
         name,
@@ -52,7 +74,7 @@ def create_map(chartType):
         int(hour),
         int(minute),
         location,
-        'BR',
+        country,
         geonames_username="andreideholte",
         perspective_type="True Geocentric",
     )
