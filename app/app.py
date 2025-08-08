@@ -52,8 +52,7 @@ def create_map(chartType):
             fullHour = field['fieldValue'].replace(' ', '')
         elif field['fieldName'] == 'local_nascimento':
             location_data = field['fieldValue']
-            location = [str(location_data['location']['latitude']), 
-                       str(location_data['location']['longitude'])]
+            location = location_data['formatted']
             country = location_data['country']
     
     print('Creating natal chart for', name)
