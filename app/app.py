@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from kerykeion import KerykeionChartSVG, AstrologicalSubject
+import re
 
 app = Flask(__name__)
 CORS(app)
@@ -78,9 +79,21 @@ def create_map(chartType):
         perspective_type="True Geocentric",
     )
 
-    chart = KerykeionChartSVG(astrological_subject, chart_language="PT", chart_type=chartType)
-    template = chart.makeTemplate()
+    custom_planets_settings = {
+        "Sa": {"name": "Saturno"}
+    }
 
+    chart = KerykeionChartSVG(
+        astrological_subject,
+        chart_language="PT",
+        chart_type=chartType,
+        planets_settings=custom_planets_settings,
+    )
+    template = chart.makeTemplate()
+    
+    # Pós-processamento do SVG para remover "Pontos para <nome>"
+    template = re.sub(r'<text[^>]*>Pontos para [^<]*</text>', '', template)
+    
     return jsonify({'chart': template})
 
 if __name__ == '__main__':
