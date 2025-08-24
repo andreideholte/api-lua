@@ -79,17 +79,11 @@ def create_map(chartType):
         perspective_type="True Geocentric",
     )
 
-    custom_chart_settings = {
-        "planets": {
-            "Sa": {"name": "Saturno"}
-        }
-    }
-
     chart = KerykeionChartSVG(
         astrological_subject,
         chart_language="PT",
         chart_type=chartType,
-        chart_settings=custom_chart_settings,
+        new_settings_file="custom_settings.json"
     )
     template = chart.makeTemplate()
     
