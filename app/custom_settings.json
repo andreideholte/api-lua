@@ -1094,7 +1094,7 @@
     },
     {
       "id": 6,
-      "name": "Saturno",
+      "name": "Saturn",
       "color": "var(--kerykeion-chart-color-saturn)",
       "element_points": 10,
       "related_zodiac_signs": [
