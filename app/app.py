@@ -90,7 +90,7 @@ def create_map(chartType):
     
     # Pós-processamento do SVG para remover "Pontos para <nome>"
     template = re.sub(r'<text[^>]*>Pontos para [^<]*</text>', '', template)
-    template = re.sub(r'<text[^>]*>Saturn[^<]*</text>', 'Saturno', template)
+    template = re.sub(r'(<text[^>]*>)Saturn([^<]*)(</text>)', r'\1Saturno\3', template)
     
     return jsonify({'chart': template})
 
