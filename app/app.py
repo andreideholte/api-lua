@@ -31,7 +31,7 @@ def create_map(chartType):
     if chartType not in ['Natal'] : 
         return jsonify({"error": "Sorry, the 'chartType' parameter is not supported yet."}), 404
 
-    print(request.json)
+    #print(request.json)
     
     fields = request.json['fields']
     
@@ -90,6 +90,7 @@ def create_map(chartType):
     
     # Pós-processamento do SVG para remover "Pontos para <nome>"
     template = re.sub(r'<text[^>]*>Pontos para [^<]*</text>', '', template)
+    template = re.sub('Saturn_comp-mees4pd8o', 'Saturno', template)
     
     return jsonify({'chart': template})
 
