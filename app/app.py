@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from kerykeion import KerykeionChartSVG, AstrologicalSubject
 import re
+from pathlib import Path
 
 app = Flask(__name__)
 CORS(app)
@@ -83,7 +84,7 @@ def create_map(chartType):
         astrological_subject,
         chart_language="PT",
         chart_type=chartType,
-        new_settings_file="custom_settings.json"
+        new_settings_file=Path("custom_settings.json")
     )
     template = chart.makeTemplate()
     
