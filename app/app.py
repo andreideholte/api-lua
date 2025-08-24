@@ -84,7 +84,7 @@ def create_map(chartType):
         astrological_subject,
         chart_language="PT",
         chart_type=chartType,
-        new_settings_file=Path("custom_settings.json")
+        new_settings_file=Path(Path(__file__).parent / "custom_settings.json")
     )
     template = chart.makeTemplate()
     
