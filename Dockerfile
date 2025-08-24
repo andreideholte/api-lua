@@ -13,6 +13,7 @@ RUN pip install -r requirements.txt
 
 COPY ./app/*.py /api-lua/app/
 COPY ./app/uwsgi.ini /api-lua/app/
+COPY ./app/custom_settings.json /api-lua/app/
 WORKDIR /api-lua/app
 
 RUN adduser --disabled-password --gecos '' uwsgiuser
